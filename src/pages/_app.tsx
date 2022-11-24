@@ -8,11 +8,10 @@ import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import { getCookie, setCookie } from "cookies-next";
 
-const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
+export function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
-
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    props.colorScheme
+    pageProps.colorScheme
   );
 
   const toggleColorScheme = (value?: ColorScheme) => {
@@ -48,13 +47,12 @@ const MyApp = (props: AppProps & { colorScheme: ColorScheme }) => {
       </ColorSchemeProvider>
     </>
   );
-};
-MyApp.getInitialProps = async (appContext: AppContext) => {
+}
+App.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
-
-  return {
-    ...appProps,
+  appProps.pageProps = {
     colorScheme: getCookie("mantine-color-scheme", appContext.ctx) || "dark",
   };
+  return appProps;
 };
-export default trpc.withTRPC(MyApp);
+export default trpc.withTRPC(App);
