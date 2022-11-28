@@ -3,29 +3,18 @@ import { IconSun, IconMoonStars } from "@tabler/icons";
 
 export function ColorSchemeToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
 
   return (
-    <Group position="center" mt="xl">
+    <>
       <ActionIcon
+        variant="outline"
+        color={dark ? "yellow" : "blue"}
         onClick={() => toggleColorScheme()}
-        size="xl"
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
-          color:
-            theme.colorScheme === "dark"
-              ? theme.colors.yellow[4]
-              : theme.colors.blue[6],
-        })}
+        title="Toggle color scheme"
       >
-        {colorScheme === "dark" ? (
-          <IconSun size={20} stroke={1.5} />
-        ) : (
-          <IconMoonStars size={20} stroke={1.5} />
-        )}
+        {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
       </ActionIcon>
-    </Group>
+    </>
   );
 }
