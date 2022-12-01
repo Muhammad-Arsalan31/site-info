@@ -8,12 +8,25 @@ import {
   Burger,
   useMantineTheme,
   Box,
+  SegmentedControl,
+  Group,
+  Title,
+  CardSection,
+  Center,
 } from "@mantine/core";
 import { ColorSchemeToggle } from "./ColorSchemeToggle";
+import { HeaderMegaMenu } from "./Header";
+import  SideBar  from "./SideBar";
+// import { DataTable } from "mantine-datatable";
+// import companies from "./companies.json";
+// import { AddFormModal } from "./Modal";
+// import { FeaturesCards } from "./Card";
 
 export default function AppShellDemo() {
   const theme = useMantineTheme();
+  const [userType, setUserType] = useState("admin");
   const [opened, setOpened] = useState(false);
+
   return (
     <AppShell
       styles={{
@@ -27,44 +40,78 @@ export default function AppShellDemo() {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
-        <Navbar
-          p="md"
-          hiddenBreakpoint="sm"
-          hidden={!opened}
-          width={{ sm: 200, lg: 300 }}
-        >
-          <Text>Application navbar</Text>
-        </Navbar>
+        userType === "admin" ? (
+          <Navbar
+            hiddenBreakpoint="sm"
+            hidden={!opened}
+            width={{ sm: 200, lg: 300 }}
+          >
+            <SideBar />
+          </Navbar>
+        ) : (
+          <></>
+        )
       }
       header={
-        <Header height={{ base: 50 }} p="md">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              height: "100%",
-            }}
-          >
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="xl"
-              />
-            </MediaQuery>
+        userType === "admin" ? (
+          <Header height={{ base: 50 }} p="md">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                height: "100%",
+              }}
+            >
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  color={theme.colors.gray[6]}
+                  mr="xl"
+                />
+              </MediaQuery>
 
-            <Text>Application header</Text>
-            <Box>
-              <ColorSchemeToggle />
-            </Box>
-          </div>
-        </Header>
+              <Text>Site Information Admin</Text>
+              <SegmentedControl
+                value={userType}
+                onChange={setUserType}
+                data={[
+                  { label: "User", value: "user" },
+                  { label: "Admin", value: "admin" },
+                ]}
+              />
+              <Box>
+                <ColorSchemeToggle />
+              </Box>
+            </div>
+          </Header>
+        ) : (
+          <HeaderMegaMenu />
+        )
       }
     >
-      <Text>Resize app to see responsive navbar in action</Text>
+      
+      <Center style={{ width: 400 }} m="auto">
+        <Title>Dashboard</Title>
+      </Center>
+
+      {/* <Box>
+        <DataTable
+          columns={[
+            { accessor: "name" },
+            { accessor: "streetAddress" },
+            { accessor: "city" },
+            { accessor: "state" },
+          ]}
+          records={companies}
+          mt={30}
+          highlightOnHover
+        />
+      </Box> */}
+
+      {/* <FeaturesCards /> */}
     </AppShell>
   );
 }
