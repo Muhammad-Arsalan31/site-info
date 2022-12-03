@@ -1,7 +1,11 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import AppShellDemo from "@Components/Shell";
+import {trpc} from '../../../utils/trpc'
+import { DataTable } from "mantine-datatable";
 const SiteInfo: NextPage = () => {
+
+  const {data,isLoading} = trpc.siteinfo.getAll.useQuery()
   return (
     <>
       <Head>
@@ -10,6 +14,11 @@ const SiteInfo: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <h1>Hello site info</h1>
+
+        <DataTable columns={[{
+          accessor:"site_id"
+        }]} records={data} fetching={isLoading}/>
+
     </>
   );
 };

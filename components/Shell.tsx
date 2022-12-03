@@ -17,12 +17,14 @@ import {
 import { ColorSchemeToggle } from "./ColorSchemeToggle";
 import { HeaderMegaMenu } from "./Header";
 import  SideBar  from "./SideBar";
+import { FeaturesCards } from "./Card";
 // import { DataTable } from "mantine-datatable";
 // import companies from "./companies.json";
 // import { AddFormModal } from "./Modal";
-// import { FeaturesCards } from "./Card";
-
-export default function AppShellDemo() {
+interface Props {
+  children:React.ReactElement
+}
+export default function AppShellDemo({children}:Props) {
   const theme = useMantineTheme();
   const [userType, setUserType] = useState("admin");
   const [opened, setOpened] = useState(false);
@@ -93,9 +95,12 @@ export default function AppShellDemo() {
       }
     >
       
-      <Center style={{ width: 400 }} m="auto">
+      {/* <Center style={{ width: 400 }} m="auto">
         <Title>Dashboard</Title>
       </Center>
+
+      <FeaturesCards /> */}
+      {children}
 
       {/* <Box>
         <DataTable
@@ -111,7 +116,6 @@ export default function AppShellDemo() {
         />
       </Box> */}
 
-      {/* <FeaturesCards /> */}
     </AppShell>
   );
 }

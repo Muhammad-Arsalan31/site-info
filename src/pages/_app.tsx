@@ -7,6 +7,7 @@ import type { ColorScheme } from "@mantine/core";
 import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import { getCookie, setCookie } from "cookies-next";
+import AppShellDemo from "@Components/Shell";
 
 export function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -42,7 +43,9 @@ export function App(props: AppProps & { colorScheme: ColorScheme }) {
           withGlobalStyles
           withNormalizeCSS
         >
-          <Component {...pageProps} />
+          <AppShellDemo>
+            <Component {...pageProps} />
+          </AppShellDemo>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

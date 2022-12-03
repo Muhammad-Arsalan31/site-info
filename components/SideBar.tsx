@@ -12,7 +12,7 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { NavebarLinksGroup } from "./NavebarLinksGroup";
 
 const mockdata = [
-  { label: "Dashboard", link: "/admin", icon: IconGauge },
+  { label: "Dashboard", link: "/", icon: IconGauge },
   {
     label: "Site Info",
     icon: IconNotes,
@@ -21,7 +21,7 @@ const mockdata = [
       { label: "PO", link: "/" },
       { label: "Users", link: "/" },
       { label: "Projects", link: "/" },
-      { label: "Site Info", link: "/" },
+      { label: "Site Info", link: "/admin/siteinfo" },
     ],
   },
   {
