@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@emotion/react': ^11.10.5
   '@emotion/server': ^11.10.0
-  '@mantine/core': ^5.8.2
-  '@mantine/hooks': ^5.8.2
+  '@mantine/core': ^5.9.0
+  '@mantine/hooks': ^5.9.0
   '@mantine/next': ^5.8.2
   '@prisma/client': ^4.5.0
   '@tabler/icons': ^1.112.0
@@ -21,8 +21,9 @@ specifiers:
   cookies-next: ^2.1.1
   eslint: ^8.26.0
   eslint-config-next: 13.0.2
+  mantine-datatable: ^1.7.21
   next: 13.0.2
-  prisma: ^4.5.0
+  prisma: ^4.7.1
   react: 18.2.0
   react-dom: 18.2.0
   superjson: 1.9.1
@@ -32,10 +33,10 @@ specifiers:
 dependencies:
   '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia
   '@emotion/server': 11.10.0
-  '@mantine/core': 5.8.3_2vc2xgx7q2ij62urx5h5ijvzqm
-  '@mantine/hooks': 5.8.3_react@18.2.0
+  '@mantine/core': 5.9.0_ojklsyhc55wxuatoyyzw45q77y
+  '@mantine/hooks': 5.9.0_react@18.2.0
   '@mantine/next': 5.8.3_2yjnrz563a2yiqhxxepgcvney4
-  '@prisma/client': 4.6.1_prisma@4.6.1
+  '@prisma/client': 4.6.1_prisma@4.7.1
   '@tabler/icons': 1.113.0_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query': 4.18.0_biqbaboplfbrettd7655fr4n2y
   '@trpc/client': 10.0.0-rc.4_@trpc+server@10.0.0-rc.4
@@ -43,6 +44,7 @@ dependencies:
   '@trpc/react-query': 10.0.0-rc.4_axphutikby3o6net5r435ec26e
   '@trpc/server': 10.0.0-rc.4
   cookies-next: 2.1.1
+  mantine-datatable: 1.7.21_anfq3vxtrkfuyahkbbo3uv472a
   next: 13.0.2_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -57,7 +59,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.44.0_hsf322ms6xhhd4b5ne6lb74y4a
   eslint: 8.28.0
   eslint-config-next: 13.0.2_hsf322ms6xhhd4b5ne6lb74y4a
-  prisma: 4.6.1
+  prisma: 4.7.1
   typescript: 4.9.3
 
 packages:
@@ -313,17 +315,17 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@mantine/core/5.8.3_2vc2xgx7q2ij62urx5h5ijvzqm:
-    resolution: {integrity: sha512-KiGrBtKhqVfOM82SWvob7635EWGLdXq1q/62YS+x1pgbrOJSk22EU9HgAuL5cJqbZ5Dwggb2irlAhsZNiBx9oQ==}
+  /@mantine/core/5.9.0_ojklsyhc55wxuatoyyzw45q77y:
+    resolution: {integrity: sha512-ofjUWMDmAepuU5hGIk/RabLhJkd4Bl6Wx6KtPUpIzxjsgkhIr18o6UDBiVXm96muAvQfo4Ru8nhpG8P0VnPOUQ==}
     peerDependencies:
-      '@mantine/hooks': 5.8.3
+      '@mantine/hooks': 5.9.0
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@floating-ui/react-dom-interactions': 0.10.3_2zx2umvpluuhvlq44va5bta2da
-      '@mantine/hooks': 5.8.3_react@18.2.0
-      '@mantine/styles': 5.8.3_sogmqz4enknxtkxk3k5s6bqwnq
-      '@mantine/utils': 5.8.3_react@18.2.0
+      '@mantine/hooks': 5.9.0_react@18.2.0
+      '@mantine/styles': 5.9.0_sogmqz4enknxtkxk3k5s6bqwnq
+      '@mantine/utils': 5.9.0_react@18.2.0
       '@radix-ui/react-scroll-area': 1.0.0_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -333,8 +335,8 @@ packages:
       - '@types/react'
     dev: false
 
-  /@mantine/hooks/5.8.3_react@18.2.0:
-    resolution: {integrity: sha512-tXUm164GRGRMTtc+oXzJq8Pg4DW9EuURHcM+yV5Hw3kWNIGQzW/9E8ghjjyV2rS9DIdxB678rXAdeL6t2TVrPA==}
+  /@mantine/hooks/5.9.0_react@18.2.0:
+    resolution: {integrity: sha512-SkxMMYMe/X7UBcWrgjPy5kWMRZrphEueeopYvrivGLKf0xsL1o5O7DH2yq9r5IlTXb8B3vwwoEctxH5FA8Yb2Q==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
@@ -388,8 +390,22 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /@mantine/utils/5.8.3_react@18.2.0:
-    resolution: {integrity: sha512-MprJbMh/z3TbC8yPF2PQftitRwl58w7hvhp7O9fT+9jrvJHKM8V7r15iHMwBw2jgX6zmlksstO7QfhENc0vMHQ==}
+  /@mantine/styles/5.9.0_sogmqz4enknxtkxk3k5s6bqwnq:
+    resolution: {integrity: sha512-xt7zPz7pISTnmP/OWBLsqVJocn7AMHAnwRvbfs8q4M8Vm1kn1IQEIpLUuWGcJn1+z8py5GxCwIVMU3jBEuow4A==}
+    peerDependencies:
+      '@emotion/react': '>=11.9.0'
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia
+      clsx: 1.1.1
+      csstype: 3.0.9
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@mantine/utils/5.9.0_react@18.2.0:
+    resolution: {integrity: sha512-UU5kO1VcsntrKvznJMjZ1S/ZM6arAXFkBnBqAKfCPOPJJIcwUWOfQP8u1sxp8ounAHThp9GtkpuzzGOQy1rcPA==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
@@ -544,7 +560,7 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@prisma/client/4.6.1_prisma@4.6.1:
+  /@prisma/client/4.6.1_prisma@4.7.1:
     resolution: {integrity: sha512-M1+NNrMzqaOIxT7PBGcTs3IZo7d1EW/+gVQd4C4gUgWBDGgD9AcIeZnUSidgWClmpMSgVUdnVORjsWWGUameYA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
@@ -555,15 +571,15 @@ packages:
         optional: true
     dependencies:
       '@prisma/engines-version': 4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32
-      prisma: 4.6.1
+      prisma: 4.7.1
     dev: false
 
   /@prisma/engines-version/4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32:
     resolution: {integrity: sha512-HUCmkXAU2jqp2O1RvNtbE+seLGLyJGEABZS/R38rZjSAafAy0WzBuHq+tbZMnD+b5OSCsTVtIPVcuvx1ySxcWQ==}
     dev: false
 
-  /@prisma/engines/4.6.1:
-    resolution: {integrity: sha512-3u2/XxvxB+Q7cMXHnKU0CpBiUK1QWqpgiBv28YDo1zOIJE3FCF8DI2vrp6vuwjGt5h0JGXDSvmSf4D4maVjJdw==}
+  /@prisma/engines/4.7.1:
+    resolution: {integrity: sha512-zWabHosTdLpXXlMefHmnouhXMoTB1+SCbUU3t4FCmdrtIOZcarPKU3Alto7gm/pZ9vHlGOXHCfVZ1G7OIrSbog==}
     requiresBuild: true
 
   /@radix-ui/number/1.0.0:
@@ -2195,6 +2211,18 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /mantine-datatable/1.7.21_anfq3vxtrkfuyahkbbo3uv472a:
+    resolution: {integrity: sha512-uCrLiK/2JNzMhYmfatHccwahtZHpRjs03p3PHoAN9uNSOrBHmez3ce8skw8xHHmhvZZgNJ7MC5IkWzRxkIjsiA==}
+    peerDependencies:
+      '@mantine/core': ^5.8.3
+      '@mantine/hooks': ^5.8.3
+      react: ^18.2.0
+    dependencies:
+      '@mantine/core': 5.9.0_ojklsyhc55wxuatoyyzw45q77y
+      '@mantine/hooks': 5.9.0_react@18.2.0
+      react: 18.2.0
+    dev: false
+
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -2449,13 +2477,13 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prisma/4.6.1:
-    resolution: {integrity: sha512-BR4itMCuzrDV4tn3e2TF+nh1zIX/RVU0isKtKoN28ADeoJ9nYaMhiuRRkFd2TZN8+l/XfYzoRKyHzUFXLQhmBQ==}
+  /prisma/4.7.1:
+    resolution: {integrity: sha512-CCQP+m+1qZOGIZlvnL6T3ZwaU0LAleIHYFPN9tFSzjs/KL6vH9rlYbGOkTuG9Q1s6Ki5D0LJlYlW18Z9EBUpGg==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.6.1
+      '@prisma/engines': 4.7.1
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
