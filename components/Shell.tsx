@@ -9,18 +9,11 @@ import {
   useMantineTheme,
   Box,
   SegmentedControl,
-  Group,
-  Title,
-  CardSection,
-  Center,
 } from "@mantine/core";
 import { ColorSchemeToggle } from "./ColorSchemeToggle";
 import { HeaderMegaMenu } from "./Header";
 import  SideBar  from "./SideBar";
 import { FeaturesCards } from "./Card";
-// import { DataTable } from "mantine-datatable";
-// import companies from "./companies.json";
-// import { AddFormModal } from "./Modal";
 interface Props {
   children:React.ReactElement
 }
