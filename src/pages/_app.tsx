@@ -8,13 +8,14 @@ import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import { getCookie, setCookie } from "cookies-next";
 import AppShellDemo from "@Components/Shell";
+import { NotificationsProvider } from "@mantine/notifications";
 
 export function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     pageProps.colorScheme
   );
-    console.log(pageProps)
+  console.log(pageProps);
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme =
       value || (colorScheme === "dark" ? "light" : "dark");
@@ -43,9 +44,11 @@ export function App(props: AppProps & { colorScheme: ColorScheme }) {
           withGlobalStyles
           withNormalizeCSS
         >
-          <AppShellDemo>
-            <Component {...pageProps} />
-          </AppShellDemo>
+          <NotificationsProvider>
+            <AppShellDemo>
+              <Component {...pageProps} />
+            </AppShellDemo>
+          </NotificationsProvider>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

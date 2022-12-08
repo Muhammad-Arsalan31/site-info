@@ -57,7 +57,19 @@ const SiteInfo: NextPage = () => {
           records={data?.pages[0]?.items}
           columns={[
             { accessor: "id", width: 100 },
-            { accessor: "client_id", width: 100 },
+            {
+              accessor: "client",
+              width: 100,
+              render: ({ client }) => <>{client.name}</>,
+            },
+            {
+              accessor: "invoice_status",
+              // accessor: "invoice_status",
+              width: 100,
+              render: ({ invoice_status }) => (
+                <>{invoice_status?.invoice_status}</>
+              ),
+            },
           ]}
           totalRecords={data?.pages[0]?.totalDocs}
           recordsPerPage={limit}
@@ -72,7 +84,7 @@ const SiteInfo: NextPage = () => {
         />
       </Box>
     </>
-  );  
+  );
 };
 
 export default SiteInfo;

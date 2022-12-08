@@ -17,46 +17,80 @@ import {
   NumberInput,
 } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
-import { useForm } from "@mantine/form";
+import { useForm, zodResolver } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
+import { FormEvent } from "react";
+import { trpc } from "../src/utils/trpc";
+import { z } from "zod";
+import { showNotification } from "@mantine/notifications";
+
+const schema = z.object({
+  site_id: z.string(),
+  client_id: z.number(),
+  project_name_id: z.number(),
+});
 
 export function AddFormModal() {
   const [opened, { close, open }] = useDisclosure(false);
   const form = useForm({
-    // initialValues: {
-    // addSiteId: 0,
-    // termsOfService: false,
-    // },
-    // validate: {
-    //   addSiteId: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-    // },
+    validate: zodResolver(schema),
+    initialValues: {
+      site_id: null,
+      client_id: null,
+      project_name_id: null,
+    },
   });
-
+  const { mutate, mutateAsync, isLoading, data, isSuccess, isError } =
+    trpc.siteinfo.add.useMutation();
+  const handleSubmit = async () => {
+    // e.preventDefault();
+    await mutateAsync({
+      site_id: form.values.site_id,
+      client_id: form.values.client_id,
+      project_name_id: form.values.project_name_id,
+    });
+    if (isSuccess) {
+      showNotification({
+        message: data?.message,
+      });
+      return;
+    }
+    isError &&
+      showNotification({
+        message: "Site Error",
+        color: "red",
+      });
+  };
   return (
     <>
-      <Modal centered opened={opened} onClose={close} size="lg">
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <Modal
+        title="Add Site info"
+        centered
+        opened={opened}
+        onClose={close}
+        size="lg"
+      >
+        <form
+          onSubmit={form.onSubmit((values: typeof schema) => handleSubmit())}
+        >
           <Grid grow>
             <Grid.Col span={4}>
-              <NumberInput
-                id="addSiteId"
-                name="siteId"
-                placeholder="Site id"
-                {...form.getInputProps("addSiteId")}
+              <TextInput
+                placeholder="Enter Site Id"
+                withAsterisk
+                {...form.getInputProps("site_id")}
               />
-            </Grid.Col>
-            <Grid.Col span={4}>
               <Select
                 id="addClient"
                 name="clients"
                 placeholder="Pick one"
                 data={[
-                  { value: "react", label: "React" },
-                  { value: "ng", label: "Angular" },
-                  { value: "svelte", label: "Svelte" },
-                  { value: "vue", label: "Vue" },
+                  { value: 13, label: "React" },
+                  { value: 2, label: "Angular" },
+                  { value: 3, label: "Svelte" },
+                  { value: 4, label: "Vue" },
                 ]}
-                {...form.getInputProps("addClient")}
+                {...form.getInputProps("client_id")}
               />
             </Grid.Col>
             <Grid.Col span={4}>
@@ -65,12 +99,12 @@ export function AddFormModal() {
                 name="projectName"
                 placeholder="Pick one"
                 data={[
-                  { value: "react", label: "React" },
-                  { value: "ng", label: "Angular" },
-                  { value: "svelte", label: "Svelte" },
-                  { value: "vue", label: "Vue" },
+                  { value: 29, label: "React" },
+                  { value: 2, label: "Angular" },
+                  { value: 3, label: "Svelte" },
+                  { value: 4, label: "Vue" },
                 ]}
-                {...form.getInputProps("addProject")}
+                {...form.getInputProps("project_name_id")}
               />
             </Grid.Col>
           </Grid>
@@ -97,7 +131,6 @@ export function AddFormModal() {
           </Grid>
 
           <Textarea
-            id="addDescription"
             name="description"
             placeholder="Your description"
             withAsterisk
@@ -105,7 +138,7 @@ export function AddFormModal() {
             {...form.getInputProps("addDescription")}
           />
 
-          <Button fullWidth mt="8px" type="submit">
+          <Button loading={isLoading} fullWidth mt="8px" type="submit">
             Add Site Info
           </Button>
         </form>
